@@ -1,4 +1,4 @@
-package com.xiaojiu_faith.Server;
+package com.xiaojiu_faith.server;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;

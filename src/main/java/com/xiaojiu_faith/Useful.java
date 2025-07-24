@@ -1,6 +1,6 @@
 package com.xiaojiu_faith;
 
-import com.xiaojiu_faith.Server.ServerProxy;
+import com.xiaojiu_faith.server.ServerProxy;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -17,7 +17,7 @@ public class Useful {
 
     @Mod.Instance(MODID)
     public static Useful instance;
-    @SidedProxy(clientSide = "com.xiaojiu_faith.client.ClientProxy",serverSide ="com.xiaojiu_faith.Server.ServerProxy" )
+    @SidedProxy(clientSide = "com.xiaojiu_faith.client.ClientProxy",serverSide ="com.xiaojiu_faith.server.ServerProxy" )
     public static ServerProxy proxy;
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
