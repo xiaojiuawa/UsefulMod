@@ -1,8 +1,12 @@
 package com.xiaojiu_faith.server.commands.home;
 
 import net.minecraft.command.CommandBase;
+import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.util.ChunkCoordinates;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class sethome extends CommandBase {
@@ -18,12 +22,16 @@ public class sethome extends CommandBase {
     }
 
     @Override
-    public void processCommand(ICommandSender sender, String[] args) {
+    public void processCommand(ICommandSender sender, String[] args) throws CommandException {
+        if (args.length>0){
+            EntityPlayerMP player =  CommandBase.getCommandSenderAsPlayer(sender);
+            ChunkCoordinates location = player.getPlayerCoordinates();
+            int dimensionId =  sender.getEntityWorld().provider.dimensionId;
 
+        }
     }
     @Override
     public List<String> addTabCompletionOptions(ICommandSender sender, String[] args){
-
-        return null;
+        return new ArrayList<String>();
     }
 }
