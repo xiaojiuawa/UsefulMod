@@ -9,10 +9,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.Teleporter;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 import static com.xiaojiuFaith.Useful.homes;
 
@@ -37,10 +34,15 @@ public class HomeHandle implements HomeCommand {
         if (player.getEntityWorld().provider.dimensionId==home.getDimensionId()){
             player.playerNetServerHandler.setPlayerLocation(home.getHomeLocation().posX,home.getHomeLocation().posY,home.getHomeLocation().posZ,0,0);
         }else{
-            player.travelToDimension(home.getDimensionId());
-//            Teleporter teleporter=new Teleporter(Minecraft.getMinecraft().getIntegratedServer().worldServerForDimension(home.getDimensionId()));
-//            teleporter.placeInPortal(player,home.getHomeLocation().posX,home.getHomeLocation().posY,home.getHomeLocation().posZ,0);
-//            player.mcServer.getConfigurationManager().transferPlayerToDimension(player,0,teleporter);
+            if (home.getDimensionId()==1){
+                if (home.getDimensionId()==0){
+                    player.mcServer.getConfigurationManager().transferPlayerToDimension(player,-1);
+                }else{
+                    player.mcServer.getConfigurationManager().transferPlayerToDimension(player,0);
+                }
+            }
+//            player.mcServer.worldServerForDimension(home.getDimensionId()).getBlock(home.getHomeLocation().posX,home.getHomeLocation().posY,home.getHomeLocation().posZ);
+            player.mcServer.getConfigurationManager().transferPlayerToDimension(player, home.getDimensionId());
             player.playerNetServerHandler.setPlayerLocation(home.getHomeLocation().posX,home.getHomeLocation().posY,home.getHomeLocation().posZ,0,0);
 
         }
@@ -49,6 +51,10 @@ public class HomeHandle implements HomeCommand {
 
     @Override
     public List<Home> GetHome(UUID Playeruuid) {
-        return null;
+        List<Home> homes1 =new ArrayList<Home>();
+        for (Map.Entry<String, Home> entry : homes.get(Playeruuid).entrySet()) {
+            homes1.add(entry.getValue());
+        }
+        return homes1;
     }
 }

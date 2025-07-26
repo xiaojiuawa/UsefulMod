@@ -31,9 +31,6 @@ public class sethome extends CommandBase {
             HomeHandle.handle.addHome(player.getPersistentID(),location,dimensionId,args[0]);
 
         }
-        if (args.length>1){
-            HomeHandle.handle.conveyToHome(CommandBase.getCommandSenderAsPlayer(sender),args[1]);
-        }
     }
     @Override
     public List<String> addTabCompletionOptions(ICommandSender sender, String[] args){
