@@ -3,9 +3,11 @@ package com.xiaojiuFaith.server.handles;
 import com.xiaojiuFaith.Useful;
 import com.xiaojiuFaith.server.api.HomeCommand;
 import com.xiaojiuFaith.server.commands.home.Home;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ChunkCoordinates;
+import net.minecraft.world.Teleporter;
 
 import java.util.HashMap;
 import java.util.List;
@@ -36,7 +38,9 @@ public class HomeHandle implements HomeCommand {
             player.playerNetServerHandler.setPlayerLocation(home.getHomeLocation().posX,home.getHomeLocation().posY,home.getHomeLocation().posZ,0,0);
         }else{
             player.travelToDimension(home.getDimensionId());
-
+//            Teleporter teleporter=new Teleporter(Minecraft.getMinecraft().getIntegratedServer().worldServerForDimension(home.getDimensionId()));
+//            teleporter.placeInPortal(player,home.getHomeLocation().posX,home.getHomeLocation().posY,home.getHomeLocation().posZ,0);
+//            player.mcServer.getConfigurationManager().transferPlayerToDimension(player,0,teleporter);
             player.playerNetServerHandler.setPlayerLocation(home.getHomeLocation().posX,home.getHomeLocation().posY,home.getHomeLocation().posZ,0,0);
 
         }
