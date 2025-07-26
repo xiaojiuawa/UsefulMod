@@ -1,5 +1,6 @@
-package com.xiaojiu_faith.server.commands.home;
+package com.xiaojiuFaith.server.commands.home;
 
+import com.xiaojiuFaith.server.handles.HomeHandle;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
@@ -27,7 +28,11 @@ public class sethome extends CommandBase {
             EntityPlayerMP player =  CommandBase.getCommandSenderAsPlayer(sender);
             ChunkCoordinates location = player.getPlayerCoordinates();
             int dimensionId =  sender.getEntityWorld().provider.dimensionId;
+            HomeHandle.handle.addHome(player.getPersistentID(),location,dimensionId,args[0]);
 
+        }
+        if (args.length>1){
+            HomeHandle.handle.conveyToHome(CommandBase.getCommandSenderAsPlayer(sender),args[1]);
         }
     }
     @Override

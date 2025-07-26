@@ -1,11 +1,11 @@
-package com.xiaojiu_faith.client;
+package com.xiaojiuFaith.client;
 
-import com.xiaojiu_faith.server.ServerProxy;
+import com.xiaojiuFaith.server.CommonProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
-public class ClientProxy  extends ServerProxy {
+public class ClientProxy  extends CommonProxy {
     public void preInit(FMLPreInitializationEvent event)
     {
         super.preInit(event);

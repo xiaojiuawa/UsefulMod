@@ -1,6 +1,7 @@
-package com.xiaojiu_faith;
+package com.xiaojiuFaith;
 
-import com.xiaojiu_faith.server.ServerProxy;
+import com.xiaojiuFaith.server.CommonProxy;
+import com.xiaojiuFaith.server.commands.home.Home;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -8,18 +9,25 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
-import static com.xiaojiu_faith.Useful.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
+import static com.xiaojiuFaith.Useful.*;
 
 @Mod(modid = MODID , name = MODNAME , version = version,acceptedMinecraftVersions = "1.7.10")
 public class Useful {
     public static final String MODID = "usefulMod";
     public static final String MODNAME = "UsefulMod";
     public static final String version = "0.0.1";
+    public static Map<UUID, Map<String, Home>> homes = new HashMap<UUID, Map<String, Home>>();
 
     @Mod.Instance(MODID)
     public static Useful instance;
-    @SidedProxy(clientSide = "com.xiaojiu_faith.client.ClientProxy",serverSide ="com.xiaojiu_faith.server.ServerProxy" )
-    public static ServerProxy proxy;
+    @SidedProxy(
+            clientSide = "com.xiaojiuFaith.client.ClientProxy",
+            serverSide = "com.xiaojiuFaith.server.CommonProxy" )
+    public static CommonProxy proxy;
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
